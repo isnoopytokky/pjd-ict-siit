@@ -295,6 +295,7 @@ img {
     }
     #navigation > li.sub li {
 	    margin-left: 10px;
+	    line-height: 30px;
     }
 
     #navigation > li:nth-child(1) > a > img{

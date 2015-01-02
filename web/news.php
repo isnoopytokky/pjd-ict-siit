@@ -3,10 +3,7 @@
 	include "_header.php";
 ?>
 
-	<!-- slideshow -->
-<?php
-	include "_slideshow.php";
-?>	
+ 		
 	<!-- Contents -->
 	<div id="contents">
 		<div> 	

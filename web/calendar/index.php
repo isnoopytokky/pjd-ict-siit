@@ -17,7 +17,7 @@
 				center: '',
 				right: ''
 			},
-			defaultDate: '2014-11-12',			
+			//defaultDate: '2014-11-12',			
 		});	
 		var ___date = $(".fc-state-highlight").text();
 		$(".fc-toolbar h2").html( '<span>' + ___date +'</span><br>' + '<span>' + $(".fc-toolbar h2").text() +'</span>')	;
