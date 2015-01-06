@@ -195,7 +195,11 @@ img {
 	text-decoration: underline;
 }
 #logo .right > div{
-	display: inline-flex;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 #logo .right > div > div{
 	padding-right: 10px;
@@ -1022,7 +1026,7 @@ div.blog a.more:hover {
 }
 
 
-/* 88 */
+/* main page */
 #contents {
 	background-color: #ddd;
 	/*border-top: 1px solid #fff;*/
@@ -1042,7 +1046,11 @@ div.blog a.more:hover {
 	width: 940px;
 	margin: 0 auto;
 	padding: 0 10px;
-	display: flex;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 #contents .posts {
 	float: left;
@@ -1066,7 +1074,48 @@ div.blog a.more:hover {
 	text-transform: uppercase;
 }
 
- 
+/** news **/
+.contents {	
+	padding: 0px;
+}
+.contents p {
+	color: #4b3a33;
+	font-size: 12px;
+	line-height: 18px;
+	margin: 0;
+}
+.contents > div {
+	width: 900px;
+	margin: 0 auto;
+	/* padding: 0 10px; */
+	padding: 10px 10px 10px;
+	text-align: center;
+	background-color: #3B3B3A;
+}
+.contents .posts {
+	float: left;
+	height: 300px;
+	width: 302px;
+	padding: 0;
+}
+.contents .posts li {
+	width: 276px;
+	margin: 0 0 30px;
+	padding-left: 10px;
+}
+#contents .posts p a {
+	line-height: 24px;
+	margin: -3px 0 3px;
+}
+.contents #note {
+	color: #ab7d0f;
+	font: 11px/24px "EDPenSook-Bold";
+	margin: 0;
+	text-transform: uppercase;
+}
+
+
+
 /** slide **/
 #back_to_camera {
 	clear: both;
@@ -1127,4 +1176,9 @@ div.blog a.more:hover {
 #contents .banner{
 	background-image: url(../images/banner.png);
 
+}
+
+
+.news > div{
+	text-align: left;
 }

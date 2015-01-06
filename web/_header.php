@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
@@ -23,6 +24,8 @@
 					<font class="underline">Sirindhon International Institute of Technology</font><br>
 					<font>Thammasat University</font><br>
 				</li>
+				<?php   if(!isset($_SESSION["user_name"])){ ?>
+				
 				<li class="right">
 					<div>
 						<div>
@@ -35,6 +38,22 @@
 						</div>
 					</div>
 				</li>
+
+				<?php }else { ?>
+
+				<li class="right">
+					<div>
+						<div>
+							<img src="images/nav/setting-icon.png" width="30px" height="30px">						
+							<font><a href="signout.php">Sign out</a></font>
+						</div>
+						<div>
+							<font><?php print ($_SESSION["user_name"]); ?></font><br>
+							<font><?php print ($_SESSION["user_role"]); ?></font>							
+						</div>
+					</div>
+				</li>
+				<?php	}?>
 			</ul>
 		</div>
 	</div>

@@ -13,7 +13,7 @@
 			</div>
 			<div class='row'>
 				<label for="txt_password">Password</label>
-				<input type="text" placeholder="Password"  name='txt_password' data-required="true" data-type="password" data-error-message="Your Password is required">
+				<input type="password" placeholder="Password" name='txt_password' data-required="true" data-type="password" data-error-message="Your Password is required">
 			</div>			 
 			<input type="submit" value="Log in">
 		</form>
@@ -87,7 +87,7 @@ margin-left:5px;
 ::-webkit-input-placeholder { text-shadow:1px 1px 1px white; font-weight:bold; }
 ::-moz-placeholder { text-shadow:0 1px 1px white; font-weight:bold; } /* firefox 19+ */
 :-ms-input-placeholder { text-shadow:0 1px 1px white; font-weight:bold; } /* ie */
-#registration-form input[type=text] {
+#registration-form input[type=text],input[type=password] {
 	padding: 15px 20px;
 	border-radius: 1px;
   margin:5px auto;
@@ -108,11 +108,11 @@ margin-left:5px;
 -ms-transition:background-color .5s ease;
 transition:background-color .5s ease;
 }
-.no-placeholder #registration-form input[type=text] {
+.no-placeholder #registration-form input[type=text],input[type=password] {
 	padding: 10px 20px;
 }
 
-#registration-form input[type=text]:active, .placeholder #registration-form input[type=text]:focus {
+#registration-form input[type=text],input[type=password]:active, .placeholder #registration-form input[type=text],input[type=password]:focus {
 	outline: none;
 	border-color: silver;
   background-color:white;
