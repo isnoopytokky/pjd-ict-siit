@@ -36,21 +36,38 @@
 		  <!-- Editor -->						  					  								  	
 
 		  <div class="news_view"> 	
-		  <h1 class="page-header">
-			Edit
-			</h1>
-			<div class="row"  style="background-color: #3B3B3A;"><div class="col-sm-12">
-		  <text-angular name="htmlcontent" ng-model="htmlcontenttwo" class="ta-editor-fix" 						
-		  >
-		   <!--  <?php echo rawurldecode($datas[0]);  ?> -->
-		   sss
-		  </text-angular>
-		  <br>
-		  
-	  	  <!-- Editor -->
-		  
-		  <button class="btn btn-default center-block" ng-click="save()">Save</button>  
-		  <br>
+		  	<h1 class="page-header">
+		  		Edit
+		  	</h1>
+		  	<div class="row"  style="background-color: #3B3B3A;"><div class="col-sm-12">
+				<h2 class="page-header">
+					News Title
+				</h2>
+		  		<text-angular name="htmlcontent1" ng-model="htmlcontenttitle" class="ta-editor-fix"  						
+		  		>
+		  		<!--  <?php echo rawurldecode($datas[0]);  ?> -->
+		  		<?php echo rawurldecode($item["news_title"]); ?>
+		  		</text-angular>
+
+		  		<h2 class="page-header">
+					News Detail
+				</h2>
+		  		<text-angular name="htmlcontent2" ng-model="htmlcontentdetail" class="ta-editor-fix" 						
+		  		>
+		  		<!--  <?php echo rawurldecode($datas[0]);  ?> -->
+		  		<?php echo rawurldecode($item["news_detail"]); ?>
+		  		</text-angular>
+
+		  		<text-angular name="htmlcontent3" ng-model="htmlcontentid" class="ta-editor-fix" style="display:none;" 						
+		  		>
+		  		<?php echo $item["id"]; ?>
+		  		</text-angular>
+		  	<br>
+		  	
+		  	<!-- Editor -->
+		  	
+		  	<button class="btn btn-default center-block" ng-click="save()">Save</button>  
+		  	<br>
 		  </div></div></div>
 				<div class="news_view"> 			  	
 		  	<h1 class="page-header">
@@ -66,9 +83,9 @@
 
 		<div class="news_view"> 	
 				<div class="row"  style="background-color: #3B3B3A;">
-					<h1 class="text-center">
-						<img src="images/nav/e.png" width="30px" height="30px"> 
-						<?php echo $item["news_title"]; ?>
+					<h1 class="">
+						<img src="images/nav/e.png" width="30px" height="30px" class="pull-left"> 
+						<div ta-bind="text" ng-model="htmlcontenttitle" ta-readonly='disabled'></div>  
 					</h1>
 				</div>
 				<hr>
@@ -77,7 +94,7 @@
 				 		<div class="panel">
 							<div class="panel-body" style="height: inherit;">	
 								<!-- result -->							
-								<div ta-bind="text" ng-model="htmlcontenttwo" ta-readonly='disabled'></div>  
+								<div ta-bind="text" ng-model="htmlcontentdetail" ta-readonly='disabled'></div>  
 							</div>
 							</div>
 		            		<!-- <div class="panel-footer">
@@ -97,18 +114,21 @@
 							
 							//save about
 							$scope.save =function() {    
-								debugger;
+								
 							$.ajax({ 
-								url: "connection/save-about1.php" ,
+								url: "connection/save-news.php" ,
 								type: "POST",
 								datatype: "json",
-								data: "html=" + encodeURIComponent( $scope.htmlcontenttwo )
+								data: 	"detail=" + encodeURIComponent( $scope.htmlcontentdetail ) + 
+										"&title=" +  encodeURIComponent( $scope.htmlcontenttitle ) +
+										"&id=" +  encodeURIComponent( <?php echo $item["id"]; ?> )  
 							})
 							.success(function(result) { 
+								
 								var obj = jQuery.parseJSON(result);
 								if(obj != null)
 								{
-									debugger;
+								
 									alert('Chaiyo !!! ');
 								}
 								else
