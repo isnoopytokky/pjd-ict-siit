@@ -3,7 +3,7 @@
 session_start();
 
 // Include Medoo
-require_once 'test-db.php';
+require_once 'conn-db.php';
 
 // // Initialize
 // $database = new medoo([

@@ -11,7 +11,7 @@
 		$datas = $database->select("tb_news","*",
 			[
 				"isactive" => 1,
-				"LIMIT" => 6
+				//"LIMIT" => 6
 			]);
 		 
 	?>
@@ -22,11 +22,11 @@
 	<div id="contents_news">
 		<div class="news"> 	
 				<h1 class="page-header text-center">
-				NEWS AND ANNOUCEMENT
+				ALL NEWS AND ANNOUCEMENT
 				<!-- show edit button if be staff -->
 				<?php if(isset($_SESSION["user_name"]) && $_SESSION["user_role"] == "Staff" ){ ?>
 				<div class="pull-right">	
-					<a href="./news_staff.php">
+					<a href="#">
 						<img src="images/nav/setting-icon.png" width="30px" height="30px"> <span >Edit</span>
 					</a>
 				</div>
@@ -36,19 +36,19 @@
 
 				<?php
 				$row = 1;
-				if(count($datas) > 3)
-					$row = 2;
-
-				for($i=1;$i<=$row;$i++)
+				$row = round(count($datas)/3);
+				if($row*3 < count($datas))
+					$row++;
+				for($i=0;$i<$row;$i++)
 				{
-
+				 
 				?>
 
 				<div class="row">
 				 	<?php
-				 	for($j=1;$j<=count($datas)/2;$j++)
+				 	for($j=1;$j<=3 && ($i * 3)+$j-1 < count($datas) ;$j++)
 					{
-						$item = $datas[($i * $j)-1];
+						$item = $datas[($i * 3)+$j-1];
 				 	?>
 
 					<div class="col-sm-4">
@@ -56,6 +56,7 @@
 				            <div class="panel-heading">
 				              <h3 class="panel-title"><img src="images/nav/e.png" width="30px" height="30px"> 
 				              <?php echo $item["news_title"]; ?>
+				              <?php print ($i * 3)+$j-1 ;?>
 				              </h3>
 				            </div>
 				            <div class="panel-body">
@@ -64,8 +65,7 @@
 				            </div>
 				            <div class="panel-footer">
 						        <div class="pull-right">
-						            <!-- <a href="<?php echo $item["news_link"]; ?>">More...</a>		 -->				            
-						            <a href="news_view.php?id=<?php echo $item["id"]; ?>">More...</a>		
+						            <a href="<?php echo $item["news_link"]; ?>">More</a>						            
 						        </div>
 						    </div>
 				          </div>
@@ -180,13 +180,8 @@
 			 	</div> -->
 			 	<!-- last row for more load-->
 		 		<div class="row">
-			 		<a href="./news_all.php" style="color:#fff;">
-				 		<h3 class="text-center" >					
-				 			More...			 		
-			 			</h3>
-		 			</a>
+			 	 
 			 	</div>
-			 	
 		</div>	
 	</div>
 

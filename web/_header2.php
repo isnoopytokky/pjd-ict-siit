@@ -6,25 +6,26 @@
 	<meta charset="UTF-8">
 	<title>ICT of SIIT</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+			<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
+		<link rel="stylesheet" href="http://textangular.com/css/style.css" type="text/css">
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js" type="text/javascript"></script>
+		
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" type="text/javascript"></script>
+		<script src="http://resources.infolinks.com/js/infolinks_main.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<script type='text/javascript' src='js/bootstrap.min.js'></script> 
 
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<!-- jQuery library (served from Google) -->
-	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
 	<script type='text/javascript' src='lib/scripts/jquery.min.js'></script>
 	<script type='text/javascript' src='lib/scripts/jquery.mobile.customized.min.js'></script>
 	<script type='text/javascript' src='lib/scripts/jquery.easing.1.3.js'></script> 
 	<script type='text/javascript' src='lib/scripts/camera.min.js'></script> 
 	<link rel='stylesheet' id='camera-css'  href='lib/css/camera.css' type='text/css' media='all'> 
-
-
-	<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>
-	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js'></script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
-
 </head>
 <body>
 	<div id="logo">
