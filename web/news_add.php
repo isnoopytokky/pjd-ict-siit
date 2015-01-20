@@ -4,29 +4,7 @@
 ?>
 
  	
-	<?php
-		//collect data
-		require_once 'connection/conn-db.php';
-
-		if( isset($_GET["id"]) )
-		{
-			$item = $database->get("tb_news","*",
-				[
-					"AND"=> [
-								"id" => $_GET["id"],
-								"isactive" => 1,		
-							]		
-				]);
-			if($item == [])
-			{
-				print '<meta http-equiv="refresh" content="0;url=news.php">';	
-			}
-		}
-		else		
-		{	
-			print '<meta http-equiv="refresh" content="0;url=news.php">';			
-		}
-	?>
+	 
 
 	<?php if(isset($_SESSION["user_name"]) && $_SESSION["user_role"] == "Staff" ){ ?>
 	<!-- Staff View -->
@@ -37,7 +15,7 @@
 
 		  <div class="news_view"> 	
 		  	<h1 class="page-header">
-		  		Edit
+		  		Add
 		  	</h1>
 		  	<div class="row"  style="background-color: #3B3B3A;"><div class="col-sm-12">
 				<h2 class="page-header">
@@ -45,8 +23,7 @@
 				</h2>
 		  		<text-angular name="htmlcontent1" ng-model="htmlcontenttitle" class="ta-editor-fix"  						
 		  		>
-		  		<!--  <?php echo rawurldecode($datas[0]);  ?> -->
-		  		<?php echo rawurldecode($item["news_title"]); ?>
+		  		Insert Title Here ...
 		  		</text-angular>
 
 		  		<h2 class="page-header">
@@ -54,13 +31,12 @@
 				</h2>
 		  		<text-angular name="htmlcontent2" ng-model="htmlcontentdetail" class="ta-editor-fix" 						
 		  		>
-		  		<!--  <?php echo rawurldecode($datas[0]);  ?> -->
-		  		<?php echo rawurldecode($item["news_detail"]); ?>
+		  		Insert Detail Here ...
 		  		</text-angular>
 
 		  		<text-angular name="htmlcontent3" ng-model="htmlcontentid" class="ta-editor-fix" style="display:none;" 						
 		  		>
-		  		<?php echo $item["id"]; ?>
+		  		
 		  		</text-angular>
 		  	<br>
 		  	
@@ -97,12 +73,7 @@
 								<div ta-bind="text" ng-model="htmlcontentdetail" ta-readonly='disabled'></div>  
 							</div>
 							</div>
-		            		<!-- <div class="panel-footer">
-						        <div class="pull-right">
-						            create date : <?php echo $item["createdate"]; ?>
-						        </div>
-						    </div>	 -->
-
+	
 
 
 					  <script type="text/javascript">
@@ -116,12 +87,11 @@
 							$scope.save =function() {    
 								
 							$.ajax({ 
-								url: "connection/save-news.php" ,
+								url: "connection/add-news.php" ,
 								type: "POST",
 								datatype: "json",
 								data: 	"detail=" + encodeURIComponent( $scope.htmlcontentdetail ) + 
-										"&title=" +  encodeURIComponent( $scope.htmlcontenttitle ) +
-										"&id=" +  encodeURIComponent( <?php echo $item["id"]; ?> )  
+										"&title=" +  encodeURIComponent( $scope.htmlcontenttitle )
 							})
 							.success(function(result) { 
 								
@@ -129,12 +99,12 @@
 								if(obj != null)
 								{
 								
-									alert('save complete. !!! ');
+									alert('add complete. !!! ');
 									location.reload();
 								}
 								else
 								{
-									alert('save fail. !!!');
+									alert('add fail. !!!');
 									//location.reload();
 								}
 							});

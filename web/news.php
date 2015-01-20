@@ -11,7 +11,8 @@
 		$datas = $database->select("tb_news","*",
 			[
 				"isactive" => 1,
-				"LIMIT" => 6
+				"LIMIT" => 6,
+				"ORDER" => "id DESC"
 			]);
 		 
 	?>

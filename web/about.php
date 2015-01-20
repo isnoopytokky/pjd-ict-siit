@@ -82,12 +82,13 @@
 								var obj = jQuery.parseJSON(result);
 								if(obj != null)
 								{
-									debugger;
-									alert('Chaiyo !!! ');
+									alert('save complete. !!! ');
+									location.reload();
 								}
 								else
 								{
-									alert('Sadddddd !!!');
+									alert('save fail. !!! ');
+									//location.reload();
 								}
 							});
 						    

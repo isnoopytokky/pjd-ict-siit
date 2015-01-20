@@ -12,6 +12,7 @@
 			[
 				"isactive" => 1,
 				//"LIMIT" => 6
+				"ORDER" => "id DESC"
 			]);
 		 
 	?>
@@ -56,7 +57,6 @@
 				            <div class="panel-heading">
 				              <h3 class="panel-title"><img src="images/nav/e.png" width="30px" height="30px"> 
 				              <?php echo $item["news_title"]; ?>
-				              <?php print ($i * 3)+$j-1 ;?>
 				              </h3>
 				            </div>
 				            <div class="panel-body">
@@ -65,7 +65,7 @@
 				            </div>
 				            <div class="panel-footer">
 						        <div class="pull-right">
-						            <a href="<?php echo $item["news_link"]; ?>">More</a>						            
+						            <a href="news_view.php?id=<?php echo $item["id"]; ?>">More...</a>					            
 						        </div>
 						    </div>
 				          </div>
