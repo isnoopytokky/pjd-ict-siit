@@ -1282,6 +1282,9 @@ div.blog a.more:hover {
 	line-height: 35px;
 }
 
+.pic:hover{
+	opacity: 0.8;
+}
 
 /*.news > .row:not(last-child) .panel-body:before {
         content: '...';

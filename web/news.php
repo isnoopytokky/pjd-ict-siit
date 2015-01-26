@@ -60,7 +60,7 @@
 				              </h3>
 				            </div>
 				            <div class="panel-body">
-				            	<img src="http://placehold.it/150x150" alt="" class="img-responsive" />
+				            	<!-- <img src="http://placehold.it/150x150" alt="" class="img-responsive" /> -->
 			              		<?php echo $item["news_detail"]; ?>
 				            </div>
 				            <div class="panel-footer">

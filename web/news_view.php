@@ -68,7 +68,9 @@
 		  	
 		  	<button class="btn btn-default center-block" ng-click="save()">Save</button>  
 		  	<br>
-		  </div></div></div>
+		  </div>
+		  </div>
+		  </div>
 				<div class="news_view"> 			  	
 		  	<h1 class="page-header">
 			Preview

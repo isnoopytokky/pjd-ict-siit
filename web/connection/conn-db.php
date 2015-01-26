@@ -12,6 +12,7 @@ $database = new medoo([
     'username' => 'root',
     'password' => 'usbw',
     'port' => '3307',
+    'charset' => 'utf8'
 ]);
 
 // $datas = $database->select("tb_test","*");
