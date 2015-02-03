@@ -29,7 +29,17 @@
 		else		
 		{	
 			$_id = $datas[0]["id"];			
-			echo "<meta http-equiv='refresh' content='0;url=contact.php?id=$_id'>";			
+			//echo "<meta http-equiv='refresh' content='0;url=contact.php?id=$_id'>";			
+			$item = $database->get("tb_users","*",
+				[
+					
+					"id" => $_id 
+							
+				]);
+			if($item == [])
+			{
+				print '<meta http-equiv="refresh" content="0;url=index.php">';	
+			}
 		}		
 
 	?>
@@ -313,8 +323,10 @@
 
 
  <script type="text/javascript">
-
+ 						
 						var app = angular.module("textAngularTest", ['textAngular']);
+						
+						
 						
 						// $("input[type='text']").on("click", function () {
 						//    $(this).val($(this).val().trim());
@@ -356,8 +368,8 @@
 							$.ajax({ 
 								url: "connection/get-user.php" ,
 								type: "POST",
-								datatype: "json",
-								data: 	"id=" +  encodeURIComponent( <?php echo $_GET["id"]; ?> )  
+								datatype: "json",								
+								data: 	"id=" +  encodeURIComponent( <?php echo $item["id"];?> )  
 							})
 							.success(function(result) { 
 								

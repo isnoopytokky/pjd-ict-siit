@@ -27,6 +27,13 @@
 
 </head>
 <body>
+	<?php
+			require_once 'connection/conn-db.php';
+			$datas = $database->select("tb_users","*",
+			[
+				"ORDER" => "role ASC"
+			]);
+	?>
 	<div id="logo">
 		<div>
 			<ul>
@@ -113,13 +120,14 @@
 					</a>
 				</li>
 				<li>
-					<a href="timetable.php">
+					<?php $_id = $datas[0]["id"]; ?>
+					<a href="timetable.php?id=<?php echo $_id;?>">
 						<img src="images/nav/f.png" width="30px" height="30px"><br>						
 						Timetable
 					</a>
 				</li>
-				<li>
-					<a href="contact.php">
+				<li>					
+					<a href="contact.php?id=<?php echo $_id;?>">
 						<img src="images/nav/g.png" width="30px" height="30px"><br>						
 						Contact
 					</a>
