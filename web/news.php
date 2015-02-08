@@ -25,7 +25,7 @@
 				<h1 class="page-header text-center">
 				NEWS AND ANNOUCEMENT
 				<!-- show edit button if be staff -->
-				<?php if(isset($_SESSION["user_name"]) && $_SESSION["user_role"] == "Staff" ){ ?>
+				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_role"] == "Teacher") ){ ?>
 				<div class="pull-right">	
 					<a href="./news_staff.php">
 						<img src="images/nav/setting-icon.png" width="30px" height="30px"> <span >Edit</span>

@@ -35,6 +35,7 @@ if(!empty($datas))
 {
 	$user_role = $datas[0]["role"];
 	//has user
+	$_SESSION["user_id"] = $datas[0]["id"];
 	$_SESSION["user_name"] = $txt_username;
 	$_SESSION["user_role"] = $user_role;
 	
@@ -42,6 +43,8 @@ if(!empty($datas))
 else
 {
 	//wrong user or pass
+	if(isset($_SESSION["user_id"] ))
+		unset($_SESSION["user_id"] );
 	if(isset($_SESSION["user_name"] ))
 		unset($_SESSION["user_name"] );	
 	if(isset($_SESSION["user_role"] ))

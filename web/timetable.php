@@ -98,8 +98,8 @@
 
 			debugger
 			var str = '';
-			var period_m = ['9.30-11.00','11.00-12.30','9.30-12.30']; //morning
-			var period_a = ['13.30-15.00','15.00-16.30','13.30-16.30']; // aftter noon
+			var period_m = ['9.00-10.20','10.20-12.00','9.00-12.00']; //morning
+			var period_a = ['13.00-14.20','14.20-16.00','13.00-16.00']; // aftter noon
 
 				
 			var ttable =[
@@ -288,15 +288,15 @@
 					Edit				
 				</h1>
 				<!-- Staff Zone -->
-				<?php if(isset($_SESSION["user_name"]) && $_SESSION["user_role"] == "Staff" ){ ?>
+				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_id"] == $item['id'] ) ){ ?>
 				<div class="row">
 			 		<div class="col-xs-12">
 			 			 <div class="bs-docs-grid row show-grid">
 				            	<div class="row show-grid" style="border: solid 1px #fff;">							      
 							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-col"><p>DATE</p></div>
-							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 align-col"><p>9.30 - 12.30</p></div>
+							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 align-col"><p>9.00 - 12.00</p></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 align-col">&nbsp;</div>
-							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 align-col"><p>13.30 - 16.30</p></div>
+							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 align-col"><p>13.00 - 16.00</p></div>
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="staff_mon_day">
 							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-col">MON</div>
@@ -421,7 +421,7 @@
 							     
 							  </div>
 							  <br>
-							  <button onclick="save();">ss</button>
+							  <button onclick="save();" style="padding: 10px;padding-right: 20px;padding-left: 20px;color: #000;">Save</button>
 							  <hr>
 			 		</div>
 			 	</div>
@@ -473,9 +473,9 @@
 				            	<div class="bs-docs-grid">
 				            	<div class="row show-grid" style="border: solid 1px #fff;">							      
 							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>DATE</day></div>
-							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">9.30-12.30</subject></div>
+							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">9.00-12.00</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break style="background-color:#2E2E2D;border: 1px solid #2E2E2D;">&nbsp;</break></div>
-							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">13.30-16.30</subject></div>
+							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">13.00-16.00</subject></div>
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="mon_day">							      
 							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>MON</day></div>
@@ -725,8 +725,8 @@
  							for(day of days)
  							{
 
-	 							var d_m = get_data(day,1,2,'9.30-12.30','9.30-11.00','11.00-12.30');
-	 							var d_a = get_data(day,3,4,'13.30-16.30','13.30-15.00','15.00-16.30');
+	 							var d_m = get_data(day,1,2,'9.00-12.00','9.00-10.20','10.20-12.00');
+	 							var d_a = get_data(day,3,4,'13.00-16.00','13.00-14.20','14.20-16.00');
 
 	 							if(d_m != null)
 	 							{
