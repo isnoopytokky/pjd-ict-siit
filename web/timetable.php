@@ -173,7 +173,7 @@
 				for (var j = 0; j < 4; j++){	
 					if(t[j]==1)
 					{
-						txt_mon_scode_1
+						//txt_mon_scode_1
 						$("#txt_" + get_code_day(i+1) +"_scode_" + (j+1) ).val(d[j]["subject_code"]);
 						$("#txt_" + get_code_day(i+1) +"_sname_" + (j+1) ).val(d[j]["subject_name"]);
 						$("#txt_" + get_code_day(i+1) +"_color_" + (j+1) ).val(d[j]["subject_color"]);						
@@ -711,6 +711,7 @@
 									"sname": d2["sname"],
 									"color": d2["color"],
 									"time" : t2 ,
+									"cday" : get_day_code(day)
 									};
 									res.push(r);
 									return res;
@@ -752,6 +753,7 @@
 							    url: 'connection/add-timetable.php',
 							    data: {'id':1,'data': tmp},
 							    success: function(msg) {
+							    	debugger;
 							    	if(msg == "true")
 							    	{
 								    	alert('save complete. !!! ');
