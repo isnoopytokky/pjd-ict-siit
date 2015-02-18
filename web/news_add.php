@@ -6,7 +6,7 @@
  	
 	 
 
-	<?php if(isset($_SESSION["user_name"]) && $_SESSION["user_role"] == "Staff" ){ ?>
+	<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_role"] == "Teacher") ){ ?>
 	<!-- Staff View -->
 	<div id="contents_news">
 	

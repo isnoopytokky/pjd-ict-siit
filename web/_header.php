@@ -119,12 +119,16 @@
 						News
 					</a>
 				</li>
-				<li>
+				<li class="sub">
 					<?php $_id = $datas[0]["id"]; ?>
 					<a href="timetable.php?id=<?php echo $_id;?>">
 						<img src="images/nav/f.png" width="30px" height="30px"><br>						
 						Timetable
 					</a>
+					<ul>
+						<li><a href="timetable.php?id=<?php echo $_id;?>">Teacher&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+						<li><a href="timetable_student.php?id=<?php echo $_id;?>">Student</a></li>						
+					</ul> 
 				</li>
 				<li>					
 					<a href="contact.php?id=<?php echo $_id;?>">
