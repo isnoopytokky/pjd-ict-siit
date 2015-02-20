@@ -15,50 +15,38 @@
 
 		if( isset($_GET["id"]) )
 		{
-			$item = $database->get("tb_users","*",
-				[
-					
-					"id" => $_GET["id"]
-							
-				]);
-			if($item == [])
+			$s_group = array("1", "2", "3", "4","5", "6", "7", "8");
+			$s_id = $_GET["id"];
+			$item = $datas[0];				
+			
+			
+			if($item == [] or !in_array($s_id, $s_group)) 				
 			{
-				print '<meta http-equiv="refresh" content="0;url=index.php">';	
+				print '<meta http-equiv="refresh" content="0;url=timetable_student.php?id=1">';	
 			}
 			else
 			{
-				$subject = $database->select("tb_timetable","*",
+				$subject = $database->select("tb_timetable_student","*",
 				[
 					//"GROUP" => "type",				
 					//"HAVING" => [					
-						"user_id" => $_GET["id"],
+						"student_type_id" => $_GET["id"],
 						"ORDER" => "subject_day ASC"
 					//],
 							
 				]);				
 				
-				// print "<script type='text/javascript'>
-				// 				$(function() { 
-				// 				//alert('');";
-				// print $html_str;
-				// print "});						
-				// 	</script>";
+
 				
 			}
 
 		}
 		else		
 		{	
-			$_id = $datas[0]["id"];				
-			$item = $database->get("tb_users","*",
-				[
-					
-					"id" => $_id 
-							
-				]);
+			$item = $datas[0];	
 			if($item == [])
 			{
-				print '<meta http-equiv="refresh" content="0;url=index.php">';	
+				print '<meta http-equiv="refresh" content="0;url=timetable_student.php?id=1">';	
 			}
 		}		
 
@@ -69,24 +57,19 @@
 		$(function() {
 
 			$.ajax({ 
-				url: "connection/get-timetable.php" ,
+				url: "connection/get-timetable_student.php" ,
 				type: "POST",
 				datatype: "json",
-				data: 	"id=" + <?php echo $item["id"]; ?>
+				data: 	"id=" + <?php echo $_GET["id"] ?>
 			})
 			.success(function(result) { 					
 				var obj = jQuery.parseJSON(result);
 				if(obj != null)
 				{				
-					// alert('get complete. !!! ');
-					// location.reload();
-					debugger;
 					render_timetable(obj);
 				}
 				else
 				{
-					// alert('Fail to get. !!! ');
-					//location.reload();
 					render_timetable([]);
 				}
 			});	
@@ -169,7 +152,7 @@
 				}
 			}
 
-			// debugger;
+			debugger;
 			for (var i = 0; i < ttable.length; i++){
 				t= ttable[i];
 				d= dtable[i];
@@ -287,11 +270,13 @@
 		
 		<div class="news" style="background: #2E2E2D;"> 	
 				
+				
+				<!-- Staff Zone -->
+				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" ) ){ ?>
 				<h1 class="page-header">
 					Edit				
 				</h1>
-				<!-- Staff Zone -->
-				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_id"] == $item['id'] ) ){ ?>
+
 				<div class="row">
 			 		<div class="col-xs-12">
 			 			 <div class="bs-docs-grid row show-grid">
@@ -471,41 +456,48 @@
 				            		<?php echo $item["department"];?><br>
 				            		<?php echo $item["department_th"];?>
 			            		</h4>
-				            	<h4 style="background: #fff;color: #000;padding: 5px;">
-				            		<?php echo $item["role"];?><br>
-				            		<?php echo $item["role_th"];?>
+				            	<h4 style="background: #fff;color: #000;padding: 5px;cursor: pointer;">				            															
+									Student First Year
+									<ul style="-webkit-padding-start: 20px;padding-left: 20px;font-size: 13px;">
+										<li><a href="timetable_student.php?id=1">Computer Engineering</a></li>
+										<li><a href="timetable_student.php?id=2">Information Technology</a></li>						
+									</ul> 
 				            	</h4>
-				            	<!-- <h4 style="background: #fff;color: #000;padding: 5px;">Staffs<br>เจ้าหน้าที่</h4> -->
+				            	<h4 style="background: #fff;color: #000;padding: 5px;cursor: pointer;">				            															
+									Student Second Year
+									<ul style="-webkit-padding-start: 20px;padding-left: 20px;font-size: 13px;">
+										<li><a href="timetable_student.php?id=3">Computer Engineering</a></li>
+										<li><a href="timetable_student.php?id=4">Information Technology</a></li>						
+									</ul> 
+				            	</h4>
+				            	<h4 style="background: #fff;color: #000;padding: 5px;cursor: pointer;">				            															
+									Student Third Year
+									<ul style="-webkit-padding-start: 20px;padding-left: 20px;font-size: 13px;">
+										<li><a href="timetable_student.php?id=5">Computer Engineering</a></li>
+										<li><a href="timetable_student.php?id=6">Information Technology</a></li>						
+									</ul> 
+				            	</h4>
+				            	<h4 style="background: #fff;color: #000;padding: 5px;cursor: pointer;">				            															
+									Student Fourth Year
+									<ul style="-webkit-padding-start: 20px;padding-left: 20px;font-size: 13px;">
+										<li><a href="timetable_student.php?id=7">Computer Engineering</a></li>
+										<li><a href="timetable_student.php?id=8">Information Technology</a></li>						
+									</ul> 
+				            	</h4>
 				            </div>
 				          </div>
 				 	</div>
-				 	<div class="col-sm-6">
-				 		<!-- <div class="panel">
-				            <div class="panel-body" style="height: inherit;"> -->
-				            	<div class="row">
-				            	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-			            			<img src="<?php echo $item["pic_url"]?>" width="150px" height="190px">
-			            			<br>
-			            			e-mail : <?php echo $item["email"]?>
-				            	</div>
-				            	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				            		<h4 style="left: -70px;position: relative;width: 250px;"><?php echo $item["full_name_th"];?></h4>
-				            		<h4 style="left: -70px;position: relative;width: 250px;"><?php echo $item["full_name_en"];?></h4>
-				            	</div>
-				            	</div>
-
-
-				            	<br><br>
-
+				 	<div class="col-sm-9">
+				 				<br>
 				            	<div class="bs-docs-grid">
 				            	<div class="row show-grid" style="border: solid 1px #fff;">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>DATE</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">9.00-12.00</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break style="background-color:#2E2E2D;border: 1px solid #2E2E2D;">&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">13.00-16.00</subject></div>
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="mon_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>MON</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>MON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject-none>&nbsp;</subject-none></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject data-tooltip='Software Engineering &amp;  Software Process'>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
@@ -513,35 +505,35 @@
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="tue_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>TUE</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>TUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="wend_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>WEND</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>WEND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="thurs_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>THURS</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>THURS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="fri_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>FRI</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>FRI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 					<!-- 		      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>	
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="sat_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>SAT</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>SAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 					<!-- 		      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
@@ -558,27 +550,7 @@
 				            <!-- </div>				            
 				          </div> -->
 				 	</div>
-				 	<div class="col-sm-3">
-				 		<!-- <div class="panel">				            
-				            <div class="panel-body" style="height: inherit;"> -->
-				            	
-				            <!-- </div>
-				          </div> -->
-				  		<?php
-				          	$row = count($datas);
-							for($i=0;$i<$row;$i++)
-							{
-						?>
-
-		          		<a href="timetable.php?id=<?php  echo $datas[$i]["id"];?>">
-		          			<img src="<?php  echo $datas[$i]["pic_url"];?>" width="50" height="70px" class = "pic">
-	          			</a>
-		          		
-		          		<?php
-		          			}
-	          			?>
-
-				 	</div>					
+				 			
 			 	</div>
 			 	
 
@@ -789,8 +761,8 @@
  							debugger;
  							  $.ajax({
 							    type: 'POST',
-							    url: 'connection/add-timetable.php',
-							    data: {'id':1,'data': tmp},
+							    url: 'connection/add-timetable_student.php',
+							    data: {'id':<?php echo $_GET["id"];?>,'data': tmp},
 							    success: function(msg) {
 							    	debugger;
 							    	if(msg == "true")
@@ -838,6 +810,9 @@
 							}
 							
 						}
+
+
+
 						function wysiwygeditor($scope) {
 							$('text-angular').hide()
 							$scope.orightml = '';
@@ -972,7 +947,7 @@
 								width: inherit;
 								/* padding: 10px; */
 								border: 3px solid #2E2E2D;
-								padding: 0px 20px 0px 20px;
+								padding: 0px 30px 0px 30px;
 								cursor: pointer;
 							}
 						subject-none {
@@ -994,7 +969,7 @@
 								width: inherit;
 								/* padding: 10px; */
 								border: 3px solid #2E2E2D;
-								padding: 0px 20px 0px 20px;
+								padding: 0px 30px 0px 30px;
 								cursor: pointer;
 							}
 						break {

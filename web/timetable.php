@@ -287,11 +287,14 @@
 		
 		<div class="news" style="background: #2E2E2D;"> 	
 				
+				
+				<!-- Staff Zone -->
+				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_id"] == $item['id'] ) ){ ?>
+				
 				<h1 class="page-header">
 					Edit				
 				</h1>
-				<!-- Staff Zone -->
-				<?php if(isset($_SESSION["user_name"]) && ($_SESSION["user_role"] == "Staff" || $_SESSION["user_id"] == $item['id'] ) ){ ?>
+				
 				<div class="row">
 			 		<div class="col-xs-12">
 			 			 <div class="bs-docs-grid row show-grid">
@@ -499,13 +502,13 @@
 
 				            	<div class="bs-docs-grid">
 				            	<div class="row show-grid" style="border: solid 1px #fff;">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>DATE</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">9.00-12.00</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break style="background-color:#2E2E2D;border: 1px solid #2E2E2D;">&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject style="background-color:#2E2E2D;">13.00-16.00</subject></div>
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="mon_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>MON</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>MON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject-none>&nbsp;</subject-none></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject data-tooltip='Software Engineering &amp;  Software Process'>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
@@ -513,35 +516,35 @@
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="tue_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>TUE</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>TUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="wend_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>WEND</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>WEND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="thurs_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>THURS</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>THURS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 							      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="fri_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>FRI</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>FRI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 					<!-- 		      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
 							      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 custom-col"><subject>cd</subject></div> -->
 							    </div>	
 							    <div class="row show-grid" style="border: solid 1px #fff;" id="sat_day">							      
-							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>SAT</day></div>
+							      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 custom-col"><day>SAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</day></div>
 					<!-- 		      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 custom-col"><subject>cd</subject></div>
 							      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 custom-col"><break>&nbsp;</break></div>
@@ -790,7 +793,7 @@
  							  $.ajax({
 							    type: 'POST',
 							    url: 'connection/add-timetable.php',
-							    data: {'id':1,'data': tmp},
+							    data: {'id':<?php echo $item["id"];?>,'data': tmp},
 							    success: function(msg) {
 							    	debugger;
 							    	if(msg == "true")
